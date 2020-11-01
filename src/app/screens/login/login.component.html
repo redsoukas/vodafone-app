@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="mx-auto" style="width: 350px;">
+    <form [formGroup]="loginForm">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="username" class="form-control" id="username" aria-describedby="usernameHint" formControlName="username">
+        <small id="usernameHint" class="form-text text-muted">Please provide the username you got after signup.</small>
+        <div *ngIf="submitted && loginForm?.controls?.username?.errors?.required" class="alert alert-danger" role="alert">
+          Username is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <div *ngIf="submitted && loginForm?.controls?.password?.errors?.required" class="alert alert-danger" role="alert">
+          Password is required!
+        </div>
+      </div>
+      <button (click)="handleLoginSubmit()" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

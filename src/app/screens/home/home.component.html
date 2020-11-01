@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Users</h1>
+  
+  <p>Total {{ users.length }} items</p>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.username}}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button (click)="open(user, 'edit')" type="button" class="btn btn-link">Edit</button>
+          <button (click)="deleteUser(user.id)" type="button" class="btn btn-outline-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <ngb-pagination [collectionSize]="users?.length" [pageSize]="pageSize" [(page)]="page" (pageChange)="handlePageChange($event)" aria-label="Users pagination">
+  </ngb-pagination>
+
+  <button (click)="open(null, 'create')" type="button" class="btn btn-link">Create new</button>
+</div>

@@ -1,0 +1,5 @@
+<nav class="navbar d-flex justify-content-center" *ngIf="(authStatus$ | async)?.authenticated">
+  <a type="button" class="btn btn-primary" routerLink="home" routerLinkActive="active">Home</a>
+  <button type="button" class="btn btn-primary" routerLink="contact" routerLinkActive="active">Contact</button>
+  <button (click)="handleLogout()" type="button" class="btn btn-danger">Logout</button>
+</nav>
